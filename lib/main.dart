@@ -32,11 +32,9 @@ class _HomePageState extends State<HomePage> {
   int _count = 0;
 
   void decrement() {
-    if (_count > 0) {
-      setState(() {
-        _count--;
-      });
-    }
+    setState(() {
+      _count--;
+    });
   }
 
   void increment() {
@@ -44,6 +42,10 @@ class _HomePageState extends State<HomePage> {
       _count++;
     });
   }
+
+  bool get isEmpty => _count == 0;
+
+  bool get isFull => _count == 20;
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +85,9 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-                'Pode Entrar!',
-                style: TextStyle(
+            Text(
+                isFull ? 'Lotado' : 'Pode Entrar!',
+                style: const TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF402D26),
@@ -113,13 +115,13 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: decrement,
+                  onPressed: isEmpty ? null : decrement,
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFF402D26),
+                    backgroundColor: isEmpty ? Color(0x80402D26) : Color(0xFF402D26),
                     fixedSize: const Size(110, 70),
                   ),
                   child: Text(
-                    'Saiu',
+                    'Sair',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,
@@ -130,13 +132,13 @@ class _HomePageState extends State<HomePage> {
                   width: 16,
                 ),
                 TextButton(
-                  onPressed: increment,
+                  onPressed: isFull ? null : increment,
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFF402D26),
+                    backgroundColor: isFull ? Color(0x80402D26) : Color(0xFF402D26),
                     fixedSize: const Size(110, 70),
                   ),
                   child: Text(
-                    'Entrou',
+                    'Entrar',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,

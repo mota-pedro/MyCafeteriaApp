@@ -1,4 +1,4 @@
-# contador
+# MyCafeteria
 
 A new Flutter project.
 
