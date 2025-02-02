@@ -30,27 +30,79 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        backgroundColor: Colors.white.withValues(),
-        child: ListView(
-          padding: EdgeInsets.zero,
+        backgroundColor: Colors.transparent,
+        child: Stack(
           children: <Widget>[
-            SizedBox(
-              height: 180,
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Início'),
-              onTap: () {
-                _setPage(HomePageMenu(onPageSelected: _setPage));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.food_bank),
-              title: Text('Cardápio'),
-              onTap: () {
-                _setPage(FoodMenuPage());
-              },
-            )
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(color: Colors.white70),
+                ),
+              ),
+              ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  SizedBox(
+                  height: 180,
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.home,
+                      size: 45,
+                      color: Colors.black,
+                    ),
+                    title: Text(
+                      'Início',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      _setPage(HomePageMenu(onPageSelected: _setPage));
+                    },
+                  ),
+
+                  SizedBox(height: 30),
+
+                  ListTile(
+                    leading: Icon(
+                      Icons.food_bank,
+                      size: 45,
+                      color: Colors.black,
+                    ),
+                    title: Text(
+                      'Cardápio',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      _setPage(FoodMenuPage());
+                    },
+                  ),
+
+                  SizedBox(height: 30),
+
+                  ListTile(
+                    leading: Icon(
+                      Icons.settings,
+                      size: 45,
+                      color: Colors.black,
+                    ),
+                    title: Text(
+                      'Configurações',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
+                ],
+              ),
           ],
         ),
       ),
