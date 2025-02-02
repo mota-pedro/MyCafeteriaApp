@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:contador/FoodMenuPage.dart';
 import 'package:flutter/material.dart';
 import 'HomePageMenu.dart';
 
@@ -26,7 +29,31 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.white.withValues(),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            SizedBox(
+              height: 180,
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Início'),
+              onTap: () {
+                _setPage(HomePageMenu(onPageSelected: _setPage));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.food_bank),
+              title: Text('Cardápio'),
+              onTap: () {
+                _setPage(FoodMenuPage());
+              },
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: RichText(
           text: TextSpan(
