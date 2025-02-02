@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'HomePageMenu.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,30 +9,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Widget _currentPage;
 
-  int _count = 0;
-
-  void decrement() {
-    setState(() {
-      _count--;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _currentPage = HomePageMenu(onPageSelected: _setPage);
   }
 
-  void increment() {
+  void _setPage(Widget page) {
     setState(() {
-      _count++;
+      _currentPage = page;
     });
   }
-
-  bool get isEmpty => _count == 0;
-
-  bool get isFull => _count == 20;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-      ),
+      drawer: Drawer(),
       appBar: AppBar(
         title: RichText(
           text: TextSpan(
@@ -54,77 +49,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Color(0xFF402D26),
         iconTheme: IconThemeData(color: Colors.white),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        color: Color(0xFFC3996C),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-                isFull ? 'Lotado' : 'Pode Entrar!',
-                style: const TextStyle(
-                  fontSize: 34,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF402D26),
-                )
-            ),
-
-            SizedBox(
-              height: 14,
-            ),
-
-            Text(
-              '$_count',
-              style: TextStyle(
-                fontSize: 72,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF402D26),
-              ),
-            ),
-
-            SizedBox(
-              height: 20,
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: isEmpty ? null : decrement,
-                  style: TextButton.styleFrom(
-                    backgroundColor: isEmpty ? Color(0x80402D26) : Color(0xFF402D26),
-                    fixedSize: const Size(110, 70),
-                  ),
-                  child: Text(
-                    'Sair',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                TextButton(
-                  onPressed: isFull ? null : increment,
-                  style: TextButton.styleFrom(
-                    backgroundColor: isFull ? Color(0x80402D26) : Color(0xFF402D26),
-                    fixedSize: const Size(110, 70),
-                  ),
-                  child: Text(
-                    'Entrar',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      body: _currentPage,
     );
   }
 }
