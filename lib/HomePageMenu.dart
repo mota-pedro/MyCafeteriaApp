@@ -25,7 +25,7 @@ class HomePageMenu extends StatelessWidget {
                 onPageSelected(FoodMenuPage());
               },
               style: TextButton.styleFrom(
-                  backgroundColor: Color(0x80B1B1B1),
+                  backgroundColor: Colors.white24,
                   fixedSize: const Size(350, 100),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.0),
@@ -60,7 +60,7 @@ class HomePageMenu extends StatelessWidget {
             child: TextButton(
               onPressed: null,
               style: TextButton.styleFrom(
-                  backgroundColor: Color(0x80B1B1B1),
+                  backgroundColor: Colors.white24,
                   fixedSize: const Size(350, 100),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.0),
