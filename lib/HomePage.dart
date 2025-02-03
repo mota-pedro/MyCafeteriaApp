@@ -114,7 +114,10 @@ class _HomePageState extends State<HomePage> {
                 WidgetSpan(
                     child: Padding(
                         padding: const EdgeInsets.only(right: 8),
-                        child: Icon(Icons.coffee)
+                        child: Image(
+                          image: AssetImage('assets/icon/icon_white.png'),
+                          height: 28,
+                        )
                     )
                 ),
                 TextSpan(
