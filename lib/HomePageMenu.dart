@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'FoodMenuPage.dart';
+import 'TablesPage.dart';
 
 class HomePageMenu extends StatelessWidget {
 
@@ -58,7 +59,9 @@ class HomePageMenu extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(15.0),
             child: TextButton(
-              onPressed: null,
+              onPressed: () {
+                onPageSelected(TablesPage());
+              },
               style: TextButton.styleFrom(
                   backgroundColor: Colors.white24,
                   fixedSize: const Size(350, 100),
