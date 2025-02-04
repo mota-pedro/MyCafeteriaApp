@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'model/Coffee.dart';
+import 'entities/Coffee.dart';
 
 class FoodMenuPage extends StatelessWidget {
   final List<Coffee> coffeeList = [
@@ -97,5 +97,4 @@ class FoodMenuPage extends StatelessWidget {
         )
     );
   }
-
 }
