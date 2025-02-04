@@ -1,28 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'Singleton/table_manager.dart';
 import 'entities/Coffee.dart';
 import 'entities/CafeteriaTable.dart';
+import 'Singleton/coffee_manager.dart';
 
 class FoodMenuPage extends StatelessWidget {
 
   final TextEditingController tableController = TextEditingController();
-
-  final List<Coffee> coffeeList = [
-    Coffee(name: 'Cappuccino', value: 10.0, isHot: true),
-    Coffee(name: 'Espresso', value: 7.50, isHot: true),
-    Coffee(name: 'Latte', value: 10.0, isHot: true),
-    Coffee(name: 'Iced Latte', value: 12.0, isHot: false),
-    Coffee(name: 'Macchiato', value: 12.0, isHot: true),
-    Coffee(name: 'Americano', value: 7.50, isHot: true),
-    Coffee(name: 'Cold Brew', value: 8.0, isHot: false),
-    Coffee(name: 'Frappe', value: 14.0, isHot: false)
-  ];
-
-  final List<CafeteriaTable> tableList = [
-    CafeteriaTable(number: 01),
-    CafeteriaTable(number: 02),
-    CafeteriaTable(number: 03)
-  ];
 
   FoodMenuPage({super.key});
 
@@ -41,7 +26,7 @@ class FoodMenuPage extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      for (Coffee coffee in coffeeList) Padding(
+                      for (Coffee coffee in CoffeeManager().getCoffeeList()) Padding(
                         padding: EdgeInsets.all(20),
                         child: TextButton(
                           onPressed: () => showTableSelection(context, coffee),
@@ -162,7 +147,7 @@ class FoodMenuPage extends StatelessWidget {
 
   void addToTable(Coffee coffee) {
     int selectedTableNumber = int.parse(tableController.text);
-    for (CafeteriaTable table in tableList) {
+    for (CafeteriaTable table in TableManager().getTables()) {
       if (table.number == selectedTableNumber) {
         table.addOrder(coffee);
       }

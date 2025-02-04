@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:contador/FoodMenuPage.dart';
 import 'package:flutter/material.dart';
 import 'HomePageMenu.dart';
+import 'entities/CafeteriaTable.dart';
+import 'Singleton/table_manager.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,6 +15,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Widget _currentPage;
+
+  final tableList = TableManager().getTables();
 
   @override
   void initState() {
@@ -26,6 +30,8 @@ class _HomePageState extends State<HomePage> {
       _currentPage = page;
     });
   }
+
+  List<CafeteriaTable> get getTableList => tableList;
 
   @override
   Widget build(BuildContext context) {
