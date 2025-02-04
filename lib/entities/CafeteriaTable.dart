@@ -1,12 +1,12 @@
 import 'package:contador/entities/Coffee.dart';
 
-class Table {
+class CafeteriaTable {
 
   int number;
   List<Coffee> orders = [];
   double totalAmount = 0.0;
 
-  Table({required this.number});
+  CafeteriaTable({required this.number});
 
   int get getNumber => number;
   List<Coffee> get getOrders => orders;
