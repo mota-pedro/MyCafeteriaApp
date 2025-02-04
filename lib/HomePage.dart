@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:contador/FoodMenuPage.dart';
 import 'package:flutter/material.dart';
 import 'HomePageMenu.dart';
+import 'TablesPage.dart';
 import 'entities/CafeteriaTable.dart';
 import 'Singleton/table_manager.dart';
 
@@ -89,6 +90,27 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.pop(context);
                       _setPage(FoodMenuPage());
+                    },
+                  ),
+
+                  SizedBox(height: 30),
+
+                  ListTile(
+                    leading: Icon(
+                      Icons.table_bar,
+                      size: 45,
+                      color: Colors.black,
+                    ),
+                    title: Text(
+                      'Mesas',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      _setPage(TablesPage());
                     },
                   ),
 
