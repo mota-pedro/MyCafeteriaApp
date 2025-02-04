@@ -24,4 +24,6 @@ class CafeteriaTable {
 
   void clearOrders() => orders.clear();
 
+  void clearTotalAmount() => totalAmount = 0.0;
+
 }

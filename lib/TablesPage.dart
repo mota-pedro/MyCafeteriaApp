@@ -110,6 +110,46 @@ class _TablesPageState extends State<TablesPage> {
                                 )
                               ],
                             ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Row(
+                              children: [
+                                Text(
+                                    'Total:',
+                                    style: TextStyle(
+                                      fontSize: 18
+                                    ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  'R\$ ${table.getTotalAmount.toStringAsFixed(2)}',
+                                  style: TextStyle(
+                                    fontSize: 18
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          TextButton(
+                              onPressed: () {
+                                setDialogState(() {
+                                  table.clearOrders();
+                                  table.clearTotalAmount();
+                                });
+                                setState(() {});
+                              },
+                              style: TextButton.styleFrom(
+                                  backgroundColor: Color(0xFF402D26),
+                                  fixedSize: Size(120, 60),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  )
+                              ),
+                              child: Text(
+                                  'Fechar Mesa',
+                                  style: TextStyle(color: Colors.white),
+                              ),
                           )
                         ],
                       ),
