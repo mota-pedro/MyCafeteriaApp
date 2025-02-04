@@ -10,9 +10,16 @@ class TableManager {
   TableManager._internal();
 
   final List<CafeteriaTable> tableList = [
-    CafeteriaTable(number: 01),
-    CafeteriaTable(number: 02),
-    CafeteriaTable(number: 03)
+    CafeteriaTable(number: 1),
+    CafeteriaTable(number: 2),
+    CafeteriaTable(number: 3),
+    CafeteriaTable(number: 4),
+    CafeteriaTable(number: 5),
+    CafeteriaTable(number: 6),
+    CafeteriaTable(number: 7),
+    CafeteriaTable(number: 8),
+    CafeteriaTable(number: 9),
+    CafeteriaTable(number: 10)
   ];
 
   List<CafeteriaTable> getTables() => tableList;
